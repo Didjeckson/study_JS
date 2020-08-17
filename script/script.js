@@ -8,8 +8,8 @@ let money = prompt("Ваш месячный доход?"),
   deposit = confirm("Есть ли у вас депозит в банке?"),
   expenses1 = prompt("Введите обязательную статью расходов?"),
   expenses2 = prompt("Введите обязательную статью расходов?"),
-  amount1 = prompt("Во сколько это обойдётся?"),
-  amount2 = prompt("Во сколько это обойдётся?"),
+  amount1 = +prompt("Во сколько это обойдётся?"),
+  amount2 = +prompt("Во сколько это обойдётся?"),
   mission = 100000,
   period = 12;
 
@@ -27,7 +27,7 @@ addExpenses = addExpenses.toLowerCase();
 addExpenses = addExpenses.split(", ");
 console.log(addExpenses);
 
-let budgetMonth = amount1;
+let budgetMonth = amount1 + amount2;
 console.log("Бюджет на месяц " + budgetMonth);
 
 let aimPeriod = mission / (money - budgetMonth);
