@@ -41,7 +41,7 @@ function getTargetMonth() {
   return mission / accumulatedMonth();
 }
 
-// console.log('Вам осталось копить: ', getTargetMonth() + ' месяцев');
+// console.log('Вам осталось копить: ', getTargetMonth()  + ' месяцев');
 
 console.log(typeof money);
 console.log(typeof income);
