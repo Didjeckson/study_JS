@@ -86,8 +86,11 @@ addExpenses = addExpenses.split(", ");
 console.log(addExpenses);
 
 let aimPeriod = getTargetMonth();
-console.log("Цель будет достигнута за: " + Math.ceil(aimPeriod) + " месяцев");
-
+if (aimPeriod >= 0) {
+  console.log("Цель будет достигнута за: " + Math.ceil(aimPeriod) + " месяцев");
+} else {
+  console.log('Цель не будет достигнута');
+}
 budgetDay = accumulatedMonth() / 30;
 console.log("Бюджет на день: " + Math.floor(budgetDay));
 
