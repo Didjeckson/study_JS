@@ -18,11 +18,11 @@ let money,
 let budgetDay;
 
 let start = function () {
-  money = prompt("Ваш месячный доход?");
 
-  while (!isNumber(money)) {
+  do {
     money = prompt("Ваш месячный доход?");
-  }
+  } while (!isNumber(money));
+
 };
 start();
 
