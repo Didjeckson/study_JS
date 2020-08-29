@@ -14,9 +14,8 @@ let money,
 
 start();
 
-let expensesAmount = 0;
-
 let appData = {
+  expensesAmount: 0,
   income: {},
   addIncome: [],
   expenses: {},
@@ -53,24 +52,17 @@ let appData = {
 
     let sum = 0;
 
-    for (let i = 0; i < 2; i++) {
-
-      appData.expenses[i] = prompt("Введите обязательную статью расходов?", 'продукты');
-
-      let meaning = prompt("Во сколько это обойдётся?");
-
-      while (!isNumber(meaning)) {
-        meaning = prompt("Во сколько это обойдётся?");
-      }
-
-      sum += +meaning;
+    for (let key in appData.expenses) {
+      sum += +appData.expenses[key];
     }
+
+    appData.expensesMonth = sum;
 
     return sum;
   },
   ////////////////////////////
   accumulatedMonth: function getAccumulatedMonth() {
-    return money - expensesAmount;
+    return money - appData.expensesAmount;
   },
   ///////////////////////////
   getTargetMonth: function getTargetMonth() {
@@ -92,9 +84,9 @@ let appData = {
 
 appData.asking();
 
-expensesAmount = appData.getExpensesMonth();
+appData.expensesAmount = appData.getExpensesMonth();
 
-console.log('Расходы на месяц: ' + expensesAmount);
+console.log('Расходы на месяц: ' + appData.expensesAmount);
 
 let aimPeriod = appData.getTargetMonth();
 if (aimPeriod >= 0) {
