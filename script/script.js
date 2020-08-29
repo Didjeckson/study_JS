@@ -24,10 +24,8 @@ let appData = {
   mission: 50000,
   period: 3,
   asking: function () {
-    let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую"
-      /*,
-            'мясо, сало, каша, какао'*/
-    );
+    let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую",
+      'мясо, сало, каша, какао');
     appData.addExpenses = addExpenses.toLowerCase().split(", ");
     appData.deposit = confirm("Есть ли у вас депозит в банке?");
 
@@ -61,12 +59,14 @@ let appData = {
     return sum;
   },
   ////////////////////////////
-  accumulatedMonth: function getAccumulatedMonth() {
-    return money - appData.expensesAmount;
+  getBudget: function getAccumulatedMonth() {
+    appData.budgetDay = appData.budget / 30;
+    appData.budgetMonth = appData.budget;
+    return appData.budgetMonth;
   },
   ///////////////////////////
   getTargetMonth: function getTargetMonth() {
-    return appData.mission / appData.accumulatedMonth();
+    return appData.mission / appData.getBudget();
   },
   //////////////////////////
   getStatusIncome: function getStatusIncome() {
@@ -94,7 +94,6 @@ if (aimPeriod >= 0) {
 } else {
   console.log('Цель не будет достигнута');
 }
-appData.budgetDay = appData.accumulatedMonth() / 30;
 console.log("Бюджет на день: " + Math.floor(appData.budgetDay));
 
 appData.getStatusIncome();
