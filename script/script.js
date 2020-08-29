@@ -94,8 +94,5 @@ if (aimPeriod >= 0) {
 } else {
   console.log('Цель не будет достигнута');
 }
-console.log("Бюджет на день: " + Math.floor(appData.budgetDay));
 
 appData.getStatusIncome();
-
-console.log(appData.expenses);
