@@ -60,7 +60,7 @@ let appData = {
   },
   ////////////////////////////
   getBudget: function getAccumulatedMonth() {
-    appData.budgetDay = appData.budget / 30;
+    appData.budgetDay = Math.floor(appData.budget / 30);
     appData.budgetMonth = appData.budget;
     return appData.budgetMonth;
   },
@@ -96,3 +96,9 @@ if (aimPeriod >= 0) {
 }
 
 appData.getStatusIncome();
+
+console.log('Наша программа включает в себя данные:');
+
+for (let key in appData) {
+  console.log(key + ':' + appData[key]);
+}
