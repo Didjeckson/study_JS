@@ -31,6 +31,18 @@ let appData = {
     );
     appData.addExpenses = addExpenses.toLowerCase().split(", ");
     appData.deposit = confirm("Есть ли у вас депозит в банке?");
+
+    for (let i = 0; i < 2; i++) {
+      let point = prompt("Введите обязательную статью расходов?", 'продукты'),
+        meaning = prompt("Во сколько это обойдётся?");
+
+      while (!isNumber(meaning)) {
+        meaning = prompt("Во сколько это обойдётся?");
+      }
+
+      appData.expenses[point] = meaning;
+
+    }
   },
   budget: money,
   budgetDay: 0,
@@ -45,13 +57,13 @@ let appData = {
 
       appData.expenses[i] = prompt("Введите обязательную статью расходов?", 'продукты');
 
-      let preSum = prompt("Во сколько это обойдётся?");
+      let meaning = prompt("Во сколько это обойдётся?");
 
-      while (!isNumber(preSum)) {
-        preSum = prompt("Во сколько это обойдётся?");
+      while (!isNumber(meaning)) {
+        meaning = prompt("Во сколько это обойдётся?");
       }
 
-      sum += +preSum;
+      sum += +meaning;
     }
 
     return sum;
@@ -77,6 +89,8 @@ let appData = {
     }
   },
 };
+
+appData.asking();
 
 expensesAmount = appData.getExpensesMonth();
 
