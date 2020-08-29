@@ -5,26 +5,35 @@ let isNumber = function (n) {
 };
 
 let money,
-  income = "freelance",
-  addExpenses = prompt(
-    "Перечислите возможные расходы за рассчитываемый период через запятую", 'мясо, сало, каша, какао'
-  ),
-  deposit = confirm("Есть ли у вас депозит в банке?", true),
-  expenses = [],
-  // amount1 = +prompt("Во сколько это обойдётся?", 15000),
-  // amount2 = +prompt("Во сколько это обойдётся?", 5000),
-  mission = 100000,
-  period = 12;
-let budgetDay;
+  start = function () {
+    do {
+      money = prompt("Ваш месячный доход?");
+    } while (!isNumber(money));
 
-let start = function () {
+  };
 
-  do {
-    money = prompt("Ваш месячный доход?");
-  } while (!isNumber(money));
-
-};
 start();
+
+let appData = {
+  income: {},
+  addIncome: [],
+  expenses: {},
+  addExpenses: [],
+  deposit: false,
+  mission: 50000,
+  period: 3,
+  asking: function () {
+    let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую",
+      'мясо, сало, каша, какао');
+    appData.addExpenses = addExpenses.toLowerCase().split(", ");
+    appData.deposit = confirm("Есть ли у вас депозит в банке?");
+  }
+};
+
+
+
+
+let budgetDay;
 
 function getExpensesMonth() {
 
@@ -32,7 +41,7 @@ function getExpensesMonth() {
 
   for (let i = 0; i < 2; i++) {
 
-    expenses[i] = prompt("Введите обязательную статью расходов?", 'продукты');
+    appData.expenses[i] = prompt("Введите обязательную статью расходов?", 'продукты');
 
     let preSum = prompt("Во сколько это обойдётся?");
 
@@ -43,7 +52,6 @@ function getExpensesMonth() {
     sum += +preSum;
   }
 
-  console.log(expenses);
   return sum;
 }
 
@@ -58,7 +66,7 @@ let accumulatedMonth = function getAccumulatedMonth() {
 // console.log('Профит в месяц: ', accumulatedMonth());
 
 function getTargetMonth() {
-  return mission / accumulatedMonth();
+  return appData.mission / accumulatedMonth();
 }
 
 // console.log('Вам осталось копить: ', getTargetMonth()  + ' месяцев');
@@ -76,14 +84,10 @@ function getStatusIncome() {
 }
 
 console.log(typeof money);
-console.log(typeof income);
-console.log(typeof deposit);
+console.log(typeof appData.income);
+console.log(typeof appData.deposit);
 
 console.log('Расходы на месяц: ' + expensesAmount);
-
-addExpenses = addExpenses.toLowerCase();
-addExpenses = addExpenses.split(", ");
-console.log(addExpenses);
 
 let aimPeriod = getTargetMonth();
 if (aimPeriod >= 0) {
