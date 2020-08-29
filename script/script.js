@@ -23,8 +23,10 @@ let appData = {
   mission: 50000,
   period: 3,
   asking: function () {
-    let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую",
-      'мясо, сало, каша, какао');
+    let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую"
+      /*,
+            'мясо, сало, каша, какао'*/
+    );
     appData.addExpenses = addExpenses.toLowerCase().split(", ");
     appData.deposit = confirm("Есть ли у вас депозит в банке?");
   },
@@ -75,7 +77,9 @@ let appData = {
   },
 };
 
-console.log('Расходы на месяц: ' + appData.expensesAmount);
+let expensesAmount = appData.getExpensesMonth();
+
+console.log('Расходы на месяц: ' + expensesAmount);
 
 let aimPeriod = appData.getTargetMonth();
 if (aimPeriod >= 0) {
@@ -87,3 +91,5 @@ appData.budgetDay = appData.accumulatedMonth() / 30;
 console.log("Бюджет на день: " + Math.floor(appData.budgetDay));
 
 appData.getStatusIncome();
+
+console.log(appData.expenses);
