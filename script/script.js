@@ -14,6 +14,8 @@ let money,
 
 start();
 
+let expensesAmount = 0;
+
 let appData = {
   income: {},
   addIncome: [],
@@ -35,7 +37,7 @@ let appData = {
   budgetMonth: 0,
   expensesMonth: 0,
   ////////////////////////////
-  getExpensesMonth: function getExpensesMonth() {
+  getExpensesMonth: function getExpensesMonth1() {
 
     let sum = 0;
 
@@ -56,7 +58,6 @@ let appData = {
   },
   ////////////////////////////
   accumulatedMonth: function getAccumulatedMonth() {
-    let expensesAmount = appData.getExpensesMonth();
     return money - expensesAmount;
   },
   ///////////////////////////
@@ -77,7 +78,7 @@ let appData = {
   },
 };
 
-let expensesAmount = appData.getExpensesMonth();
+expensesAmount = appData.getExpensesMonth();
 
 console.log('Расходы на месяц: ' + expensesAmount);
 
