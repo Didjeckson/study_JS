@@ -51,12 +51,17 @@ let appData = {
     }
 
     for (let i = 0; i < 2; i++) {
-      let point = prompt("Введите обязательную статью расходов?", 'продукты'),
-        meaning = prompt("Во сколько это обойдётся?");
+      let point = 0,
+        meaning = 0;
 
-      while (!isNumber(meaning)) {
-        meaning = prompt("Во сколько это обойдётся?");
+      do {
+        point = prompt("Введите обязательную статью расходов?", 'продукты');
       }
+      while (isNumber(point));
+
+      do {
+        meaning = prompt("Во сколько это обойдётся?");
+      } while (!isNumber(meaning));
 
       appData.expenses[point] = meaning;
 
@@ -103,8 +108,15 @@ let appData = {
   },
   getInfoDeposit: function () {
     if (appData.deposit) {
-      appData.percentDeposit = prompt('Какой годовой процент?', 10);
-      appData.moneyDeposit = prompt('Какая сумма заложена?', 10000);
+      do {
+        appData.percentDeposit = prompt('Какой годовой процент?', 10);
+      }
+      while (!isNumber(appData.percentDeposit));
+
+      do {
+        appData.moneyDeposit = prompt('Какая сумма заложена?', 10000);
+      }
+      while (!isNumber(appData.moneyDeposit));
     }
   },
   calcSavedMoney: function () {
