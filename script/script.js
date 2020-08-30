@@ -27,8 +27,14 @@ let appData = {
   period: 3,
   asking: function () {
     if (confirm('Есть ли у вас дополнительный источник зароботка?')) {
-      let itemIncome = prompt('Какой у вас дополнительный заработок?', 'Таксую');
+      let itemIncome = 0;
       let cashIncome = 0;
+
+      do {
+        itemIncome = prompt('Какой у вас дополнительный заработок?', 'Таксую');
+      }
+      while (isNumber(itemIncome));
+
       do {
         cashIncome = prompt('Сколько в месяц вы на этом зарабатываете', 10000);
       } while (!isNumber(cashIncome));
