@@ -7,7 +7,7 @@ let isNumber = function (n) {
 let money,
   start = function () {
     do {
-      money = prompt("Ваш месячный доход?");
+      money = prompt("Ваш месячный доход?", 50000);
     } while (!isNumber(money));
 
   };
@@ -39,7 +39,10 @@ let appData = {
     let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую",
       'мясо, сало, каша, какао');
     appData.addExpenses = addExpenses.toLowerCase().split(", ");
-    appData.deposit = confirm("Есть ли у вас депозит в банке?");
+    if (confirm("Есть ли у вас депозит в банке?")) {
+      appData.deposit = true;
+      appData.getInfoDeposit();
+    }
 
     for (let i = 0; i < 2; i++) {
       let point = prompt("Введите обязательную статью расходов?", 'продукты'),
@@ -123,6 +126,3 @@ console.log('Наша программа включает в себя данны
 for (let key in appData) {
   console.log(key + ':' + appData[key]);
 }
-
-appData.getInfoDeposit();
-console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
