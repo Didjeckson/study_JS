@@ -141,10 +141,11 @@ appData.getStatusIncome();
 
 console.log('Наша программа включает в себя данные:');
 
-// for (let key in appData) {
-//   console.log(key + ':' + appData[key]);
-// }
+for (let key in appData) {
+  console.log(key + ':' + appData[key]);
+}
 
+let stringForAddExpenses = '';
 for (let key in appData.addExpenses) {
 
   let string = '';
@@ -163,6 +164,10 @@ for (let key in appData.addExpenses) {
 
   string.slice(1);
 
-  console.log(firstLetter.toUpperCase() + stringClone + ', ');
-
+  if (key == appData.addExpenses.length - 1) {
+    stringForAddExpenses += firstLetter.toUpperCase() + stringClone;
+    console.log(stringForAddExpenses);
+  } else {
+    stringForAddExpenses += firstLetter.toUpperCase() + stringClone + ', ';
+  }
 }
