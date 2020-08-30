@@ -21,9 +21,21 @@ let appData = {
   expenses: {},
   addExpenses: [],
   deposit: false,
+  percentDeposit: 0,
+  moneyDeposit: 0,
   mission: 50000,
   period: 3,
   asking: function () {
+    if (confirm('Есть ли у вас дополнительный источник зароботка?')) {
+      let itemIncome = prompt('Какой у вас дополнительный заработок?', 'Таксую');
+      let cashIncome = 0;
+      do {
+        cashIncome = prompt('Сколько в месяц вы на этом зарабатываете', 10000);
+      } while (!isNumber(cashIncome));
+
+      appData.income[itemIncome] = cashIncome;
+    }
+
     let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую",
       'мясо, сало, каша, какао');
     appData.addExpenses = addExpenses.toLowerCase().split(", ");
@@ -80,6 +92,15 @@ let appData = {
       console.log("Что-то пошло не так");
     }
   },
+  getInfoDeposit: function () {
+    if (appData.deposit) {
+      appData.percentDeposit = prompt('Какой годовой процент?', 10);
+      appData.moneyDeposit = prompt('Какая сумма заложена?', 10000);
+    }
+  },
+  calcSavedMoney: function () {
+    return appData.budgetMonth * appData.period;
+  }
 };
 
 appData.asking();
@@ -102,3 +123,6 @@ console.log('Наша программа включает в себя данны
 for (let key in appData) {
   console.log(key + ':' + appData[key]);
 }
+
+appData.getInfoDeposit();
+console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
