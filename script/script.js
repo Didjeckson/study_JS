@@ -60,7 +60,7 @@ let appData = {
       while (isNumber(point));
 
       do {
-        meaning = prompt("Во сколько это обойдётся?");
+        meaning = prompt("Во сколько это обойдётся?", 10500);
       } while (!isNumber(meaning));
 
       appData.expenses[point] = meaning;
@@ -141,6 +141,28 @@ appData.getStatusIncome();
 
 console.log('Наша программа включает в себя данные:');
 
-for (let key in appData) {
-  console.log(key + ':' + appData[key]);
+// for (let key in appData) {
+//   console.log(key + ':' + appData[key]);
+// }
+
+for (let key in appData.addExpenses) {
+
+  let string = '';
+
+  string = appData.addExpenses[key];
+
+
+  let firstLetter = '';
+  firstLetter = string[0];
+
+  let stringClone = '';
+
+  for (let i = 1; i < string.length; i++) {
+    stringClone += string[i];
+  }
+
+  string.slice(1);
+
+  console.log(firstLetter.toUpperCase() + stringClone + ', ');
+
 }
