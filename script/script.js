@@ -46,7 +46,7 @@ let appData = {
   budgetMonth: 0,
   expensesMonth: 0,
   ////////////////////////////
-  getExpensesMonth: function getExpensesMonth1() {
+  getExpensesMonth: function () {
 
     let sum = 0;
 
@@ -59,17 +59,17 @@ let appData = {
     return sum;
   },
   ////////////////////////////
-  getBudget: function getAccumulatedMonth() {
+  getBudget: function () {
     appData.budgetDay = Math.floor(appData.budget / 30);
     appData.budgetMonth = appData.budget;
     return appData.budgetMonth;
   },
   ///////////////////////////
-  getTargetMonth: function getTargetMonth() {
+  getTargetMonth: function () {
     return appData.mission / appData.getBudget();
   },
   //////////////////////////
-  getStatusIncome: function getStatusIncome() {
+  getStatusIncome: function () {
     if (appData.budgetDay >= 1200) {
       console.log("У вас высокий уровень дохода");
     } else if (600 <= appData.budgetDay && appData.budgetDay < 1200) {
