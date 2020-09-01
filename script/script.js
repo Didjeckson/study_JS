@@ -5,7 +5,7 @@ let isNumber = function (n) {
 };
 
 let isLetters = function (n) {
-  return !isNaN(parseFloat(n)) && isFinite(n) && n === '';
+  return isNaN(parseFloat(n)) && n !== '' && n !== null;
 };
 
 let money,
@@ -37,7 +37,7 @@ let appData = {
       do {
         itemIncome = prompt('Какой у вас дополнительный заработок?', 'Таксую');
       }
-      while (isLetters(itemIncome));
+      while (!isLetters(itemIncome));
 
       do {
         cashIncome = prompt('Сколько в месяц вы на этом зарабатываете', 10000);
@@ -61,7 +61,7 @@ let appData = {
       do {
         point = prompt("Введите обязательную статью расходов?", 'продукты');
       }
-      while (isNumber(point));
+      while (!isLetters(point));
 
       do {
         meaning = prompt("Во сколько это обойдётся?", 10500);
@@ -168,7 +168,7 @@ for (let key in appData.addExpenses) {
 
   string.slice(1);
 
-  if (key == appData.addExpenses.length - 1) {
+  if (+key === appData.addExpenses.length - 1) {
     stringForAddExpenses += firstLetter.toUpperCase() + stringClone;
     console.log(stringForAddExpenses);
   } else {
