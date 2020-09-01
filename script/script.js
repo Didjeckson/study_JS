@@ -4,6 +4,10 @@ let isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
+let isLetters = function (n) {
+  return !isNaN(parseFloat(n)) && isFinite(n) && n === '';
+};
+
 let money,
   start = function () {
     do {
@@ -33,7 +37,7 @@ let appData = {
       do {
         itemIncome = prompt('Какой у вас дополнительный заработок?', 'Таксую');
       }
-      while (isNumber(itemIncome));
+      while (isLetters(itemIncome));
 
       do {
         cashIncome = prompt('Сколько в месяц вы на этом зарабатываете', 10000);
