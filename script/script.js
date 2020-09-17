@@ -1,5 +1,26 @@
 "use strict";
 
+let start = document.getElementById('start'),
+  incomePlus = document.getElementsByTagName('button')[0],
+  expensesPlus = document.getElementsByTagName('button')[1],
+  depositCheck = document.querySelector('#deposit-check'),
+  additionalIncomeItem = document.querySelectorAll('.additional_income-item'),
+  budgetDayValue = document.getElementsByClassName('budget_day-value'),
+  expensesMonthValue = document.getElementsByClassName('expenses_month-value'),
+  additionalIncomeValue = document.getElementsByClassName('additional_income-value'),
+  additionalExpensesValue = document.getElementsByClassName('additional_expenses-value'),
+  incomePeriodValue = document.getElementsByClassName('income_period-value'),
+  targetMonthValue = document.getElementsByClassName('target_month-value'),
+  budgetMonthValue = document.querySelector('.budget_month-value'),
+  salaryAmount = document.querySelector('.salary-amount'),
+  incomeTitle = document.querySelector('input.income-title'),
+  incomeAmount = document.querySelector('.income-amount'),
+  expensesTitle = document.querySelector('input.expenses-title'),
+  expensesAmount = document.querySelector('.expenses-amount'),
+  additionalExpenses = document.querySelector('.additional_expenses-item'), ///сомневаюсь, но пусть будет additionalExpenses
+  targetAmount = document.querySelector('.target-amount'),
+  periodSelect = document.querySelector('.period-select');
+
 let isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
@@ -8,15 +29,8 @@ let isLetters = function (n) {
   return isNaN(parseFloat(n)) && n !== '' && n !== null;
 };
 
-let money,
-  start = function () {
-    do {
-      money = prompt("Ваш месячный доход?", 50000);
-    } while (!isNumber(money));
 
-  };
-
-start();
+let money;  
 
 let appData = {
   expensesAmount: 0,
@@ -29,6 +43,14 @@ let appData = {
   moneyDeposit: 0,
   mission: 50000,
   period: 3,
+  start: function () {
+    do {
+      money = prompt("Ваш месячный доход?", 50000);
+    } while (!isNumber(money));
+
+    // appData.asking();
+    // appData.expensesAmount = appData.getExpensesMonth();
+  },
   asking: function () {
     if (confirm('Есть ли у вас дополнительный источник зароботка?')) {
       let itemIncome = 0;
@@ -128,55 +150,9 @@ let appData = {
   }
 };
 
-let startButton = document.getElementById('start'),
-  incomeAddButton = document.getElementsByTagName('button')[0],
-  expensesAddButton = document.getElementsByTagName('button')[1],
-  checkBox = document.querySelector('#deposit-check'),
-  additionalIncome = document.querySelectorAll('.additional_income-item'),
-  budgetDay = document.getElementsByClassName('budget_day-value'),
-  resultExpensesMonth = document.getElementsByClassName('expenses_month-value'),
-  resultAdditionalIncome = document.getElementsByClassName('additional_income-value'),
-  resultAdditionalExpenses = document.getElementsByClassName('additional_expenses-value'),
-  resultIncomePeriod = document.getElementsByClassName('income_period-value'),
-  resultTargetMonth = document.getElementsByClassName('target_month-value'),
-  budgetMonth = document.querySelector('.budget_month-value'),
-  salaryAmount = document.querySelector('.salary-amount'),
-  incomeTitle = document.querySelector('input.income-title'),
-  incomeAmount = document.querySelector('.income-amount'),
-  expensesTitle = document.querySelector('input.expenses-title'),
-  expensesAmount = document.querySelector('.expenses-amount'),
-  additionalExpensesItem = document.querySelector('.additional_expenses-item'),
-  targetAmount = document.querySelector('.target-amount'),
-  range = document.querySelector('.period-select');
+start.addEventListener('click', appData.start);
 
-//for куратора 
-// console.log(startButton);
-// console.log(incomeAddButton);
-// console.log(expensesAddButton);
-// console.log(checkBox);
-// console.log(additionalIncome);
-// console.log(budgetDay);
-// console.log(resultExpensesMonth);
-// console.log(resultAdditionalIncome);
-// console.log(resultAdditionalExpenses);
-// console.log(resultIncomePeriod);
-// console.log(resultTargetMonth);
-// console.log(budgetMonth);
-// console.log('gogogogg');
-// console.log(budgetMonth);
-// console.log(salaryAmount);
-// console.log(incomeTitle);
-// console.log(incomeAmount);
-// console.log(expensesTitle);
-// console.log(expensesAmount);
-// console.log(additionalExpensesItem);
-// console.log(targetAmount);
-// console.log(range);
-// for куратора
 
-appData.asking();
-
-appData.expensesAmount = appData.getExpensesMonth();
 
 console.log('Расходы на месяц: ' + appData.expensesAmount);
 
