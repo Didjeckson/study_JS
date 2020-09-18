@@ -20,7 +20,7 @@ let start = document.getElementById('start'),
   //пусть будет dditionalExpenses
   targetAmount = document.querySelector('.target-amount'),
   periodSelect = document.querySelector('.period-select'),
-  incomeItem = document.querySelectorAll('.income-items');
+  incomeItems = document.querySelectorAll('.income-items');
 
 let isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
@@ -90,21 +90,28 @@ let appData = {
     });
   },
   getIncome: function () {
-    if (confirm('Есть ли у вас дополнительный источник зароботка?')) {
-      let itemIncome = 0;
-      let cashIncome = 0;
-
-      do {
-        itemIncome = prompt('Какой у вас дополнительный заработок?', 'Таксую');
+    incomeItems.forEach(function (item) {
+      let itemIncome = item.querySelector('.income-title').value;
+      let cashIncome = item.querySelector('.income-amount').value;
+      if (itemIncome !== '' && cashIncome !== '') {
+        appData.income[itemIncome] = cashIncome;
       }
-      while (!isLetters(itemIncome));
+    });
+    // if (confirm('Есть ли у вас дополнительный источник зароботка?')) {
+    //   let itemIncome = 0;
+    //   let cashIncome = 0;
 
-      do {
-        cashIncome = prompt('Сколько в месяц вы на этом зарабатываете', 10000);
-      } while (!isNumber(cashIncome));
+    //   do {
+    //     itemIncome = prompt('Какой у вас дополнительный заработок?', 'Таксую');
+    //   }
+    //   while (!isLetters(itemIncome));
 
-      appData.income[itemIncome] = cashIncome;
-    }
+    //   do {
+    //     cashIncome = prompt('Сколько в месяц вы на этом зарабатываете', 10000);
+    //   } while (!isNumber(cashIncome));
+
+    //   appData.income[itemIncome] = cashIncome;
+    // }
 
     for (let key in appData.income) {
       appData.incomeMonth += +appData.income[key];
