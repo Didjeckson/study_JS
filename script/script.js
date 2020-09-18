@@ -53,13 +53,13 @@ let appData = {
 
     appData.getIncome();
     appData.expensesAmount = appData.getExpensesMonth();
-    appData.getStatusIncome();
+    // appData.getStatusIncome();
     appData.getAddExpenses();
     appData.getAddIncome();
     appData.getBudget();
 
     appData.showResult();
-    console.log(budgetMonthValue);
+    // console.log(budgetMonthValue);
   },
   showResult: function () {
     budgetMonthValue.value = appData.budgetMonth;
@@ -78,6 +78,15 @@ let appData = {
     expensesItems = document.querySelectorAll('.expenses-items');
     if (expensesItems.length === 3) {
       expensesPlus.style.display = 'none';
+    }
+  },
+  addIncomeBlock: function () {
+    console.log(incomeItems.parentNode);
+    let cloneIncomeItem = incomeItems[0].cloneNode(true);
+    incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomePlus);
+    incomeItems = document.querySelectorAll('.income-items');
+    if (incomeItems.lenght === 3) {
+      incomePlus.style.display = 'none';
     }
   },
   getExpenses: function () {
@@ -177,7 +186,7 @@ let appData = {
 };
 
 start.addEventListener('click', appData.start);
-
+incomePlus.addEventListener('click', appData.addIncomeBlock);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 
 
