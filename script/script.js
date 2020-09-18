@@ -17,7 +17,8 @@ let start = document.getElementById('start'),
   incomeAmount = document.querySelector('.income-amount'),
   expensesTitle = document.querySelector('input.expenses-title'),
   expensesAmount = document.querySelector('.expenses-amount'),
-  additionalExpenses = document.querySelector('.additional_expenses-item'), ///сомневаюсь, но пусть будет additionalExpenses
+  additionalExpenses = document.querySelector('.additional_expenses-item'), ///сомневаюсь, 
+  //но пусть будет additionalExpenses
   targetAmount = document.querySelector('.target-amount'),
   periodSelect = document.querySelector('.period-select');
 
