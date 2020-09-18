@@ -188,7 +188,7 @@ let appData = {
 start.addEventListener('click', appData.start);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
-periodSelect.addEventListener('click', appData.periodValue);
+periodSelect.addEventListener('mousemove', appData.periodValue);
 
 
 // let aimPeriod = appData.getTargetMonth();
