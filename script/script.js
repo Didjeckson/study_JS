@@ -71,8 +71,6 @@ let appData = {
     incomePeriodValue.value = appData.calcPeriod();
   },
   addExpensesBlock: function () {
-
-    console.log(expensesItems.parentNode);
     let cloneExpensesItem = expensesItems[0].cloneNode(true);
     expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesPlus);
     expensesItems = document.querySelectorAll('.expenses-items');
@@ -81,11 +79,10 @@ let appData = {
     }
   },
   addIncomeBlock: function () {
-    console.log(incomeItems.parentNode);
     let cloneIncomeItem = incomeItems[0].cloneNode(true);
     incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomePlus);
     incomeItems = document.querySelectorAll('.income-items');
-    if (incomeItems.lenght === 3) {
+    if (incomeItems.length === 3) {
       incomePlus.style.display = 'none';
     }
   },
