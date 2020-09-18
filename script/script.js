@@ -29,8 +29,7 @@ let isLetters = function (n) {
   return isNaN(parseFloat(n)) && n !== '' && n !== null;
 };
 
-
-let money;  
+let money;
 
 let appData = {
   expensesAmount: 0,
