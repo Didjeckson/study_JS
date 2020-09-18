@@ -97,21 +97,6 @@ let appData = {
         appData.income[itemIncome] = cashIncome;
       }
     });
-    // if (confirm('Есть ли у вас дополнительный источник зароботка?')) {
-    //   let itemIncome = 0;
-    //   let cashIncome = 0;
-
-    //   do {
-    //     itemIncome = prompt('Какой у вас дополнительный заработок?', 'Таксую');
-    //   }
-    //   while (!isLetters(itemIncome));
-
-    //   do {
-    //     cashIncome = prompt('Сколько в месяц вы на этом зарабатываете', 10000);
-    //   } while (!isNumber(cashIncome));
-
-    //   appData.income[itemIncome] = cashIncome;
-    // }
 
     for (let key in appData.income) {
       appData.incomeMonth += +appData.income[key];
