@@ -20,8 +20,8 @@ let start = document.getElementById('start'),
   //пусть будет dditionalExpenses
   targetAmount = document.querySelector('.target-amount'),
   periodSelect = document.querySelector('.period-select'),
-  incomeItems = document.querySelectorAll('.income-items');
-
+  incomeItems = document.querySelectorAll('.income-items'),
+  periodAmount = document.querySelector('.period-amount');
 let isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
@@ -179,13 +179,16 @@ let appData = {
   },
   calcPeriod: function () {
     return appData.budgetMonth * periodSelect.value;
+  },
+  periodValue: function () {
+    periodAmount.textContent = periodSelect.value;
   }
 };
 
 start.addEventListener('click', appData.start);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
-
+periodSelect.addEventListener('click', appData.periodValue);
 
 
 // let aimPeriod = appData.getTargetMonth();
