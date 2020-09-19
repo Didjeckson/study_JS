@@ -135,17 +135,20 @@ let appData = {
   budgetMonth: 0,
   expensesMonth: 0,
   ////////////////////////////
-  getExpensesMonth: function () {
-
+  CalcExpenses: function () {
     let sum = 0;
 
     for (let key in appData.expenses) {
       sum += +appData.expenses[key];
     }
-
-    appData.expensesMonth = sum;
-
     return sum;
+  },
+  getExpensesMonth: function () {
+    let sum1;
+
+    sum1 = appData.CalcExpenses();
+    appData.expensesMonth = sum1;
+    return sum1;
   },
   ////////////////////////////
   getBudget: function () {
