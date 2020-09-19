@@ -42,10 +42,6 @@ let appData = {
   moneyDeposit: 0,
   start: function () {
 
-    if (salaryAmount.value === '') {
-      alert('Ошибка, поле "Месячный доход" должно быть заполнено!');
-      return;
-    }
     appData.budget = +salaryAmount.value;
 
     appData.getExpenses();
@@ -60,6 +56,14 @@ let appData = {
 
     appData.showResult();
     // console.log(budgetMonthValue);
+  },
+  startVerification: function () {
+    if (salaryAmount.value === '') {
+      console.log('button is disabled');
+      return start.style.disabled;
+    } else {
+      return appData.start();
+    }
   },
   showResult: function () {
     budgetMonthValue.value = appData.budgetMonth;
@@ -186,7 +190,7 @@ let appData = {
   }
 };
 
-start.addEventListener('click', appData.start);
+start.addEventListener('click', appData.startVerification);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 periodSelect.addEventListener('mousemove', appData.periodValue);
