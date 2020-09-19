@@ -49,10 +49,10 @@ let appData = {
     appData.budget = +salaryAmount.value;
 
     appData.getExpenses();
-    appData.getExpensesMonth();
-
-    appData.getIncome();
+    // appData.getExpensesMonth();
     appData.expensesAmount = appData.getExpensesMonth();
+    appData.getIncome();
+
     // appData.getStatusIncome();
     appData.getAddExpenses();
     appData.getAddIncome();
@@ -190,6 +190,8 @@ start.addEventListener('click', appData.start);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 periodSelect.addEventListener('mousemove', appData.periodValue);
+periodSelect.addEventListener('mousemove', appData.calcPeriod);
+periodSelect.addEventListener('mousemove', appData.showResult);
 
 
 // let aimPeriod = appData.getTargetMonth();
