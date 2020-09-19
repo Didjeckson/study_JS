@@ -187,6 +187,7 @@ let appData = {
   },
   periodValue: function () {
     periodAmount.textContent = periodSelect.value;
+    incomePeriodValue.value = appData.calcPeriod();
   }
 };
 
@@ -194,8 +195,8 @@ start.addEventListener('click', appData.startVerification);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 periodSelect.addEventListener('mousemove', appData.periodValue);
-periodSelect.addEventListener('mousemove', appData.calcPeriod);
-periodSelect.addEventListener('mousemove', appData.showResult);
+// periodSelect.addEventListener('mousemove', incomePeriodValue.value = appData.calcPeriod());
+// periodSelect.addEventListener('mousemove', appData.showResult);
 
 
 // let aimPeriod = appData.getTargetMonth();
