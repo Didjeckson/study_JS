@@ -197,7 +197,7 @@ let appData = {
 start.addEventListener('click', appData.startVerification);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
-periodSelect.addEventListener('mousemove', appData.periodValue);
+periodSelect.addEventListener('input', appData.periodValue);
 // periodSelect.addEventListener('mousemove', incomePeriodValue.value = appData.calcPeriod());
 // periodSelect.addEventListener('mousemove', appData.showResult);
 
