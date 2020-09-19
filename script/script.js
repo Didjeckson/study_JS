@@ -193,8 +193,15 @@ let appData = {
     incomePeriodValue.value = appData.calcPeriod();
   }
 };
+salaryAmount.addEventListener('input', function () {
+  if (salaryAmount === '') {
+    return start.style.disabled;
+  } else {
 
-start.addEventListener('click', appData.startVerification);
+    return !start.style.disabled, appData.start();
+  }
+});
+// start.addEventListener('input', appData.startVerification);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 periodSelect.addEventListener('input', appData.periodValue);
