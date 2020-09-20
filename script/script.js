@@ -30,6 +30,10 @@ let isLetters = function (n) {
   return isNaN(parseFloat(n)) && n !== '' && n !== null;
 };
 
+let salaryAmountFinger = function (n) {
+  /// не пригодилась, наверное
+};
+
 let appData = {
   expensesAmount: 0,
   income: {},
@@ -59,7 +63,7 @@ let appData = {
   },
   startVerification: function () {
     if (salaryAmount.value === '') {
-      console.log('button is disabled');
+      console.log('button is disabled2');
       return start.style.disabled;
     } else {
       return appData.start();
@@ -201,6 +205,15 @@ let appData = {
 //     return !start.style.disabled, appData.start();
 //   }
 // });
+salaryAmount.addEventListener('input', function () {
+  if (!isNumber(salaryAmount.value)) {
+    console.log('button is disabled');
+    return start.setAttribute('disabled', 'disabled');
+  } else {
+    console.log('button is undisabled');
+    return start.removeAttribute('disabled');
+  }
+});
 start.addEventListener('click', appData.startVerification);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
