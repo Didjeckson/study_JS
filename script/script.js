@@ -66,7 +66,7 @@ let appData = {
       console.log('button is disabled2');
       return start.style.disabled;
     } else {
-      return appData.start();
+      return appData.start(this);
     }
   },
   showResult: function () {
