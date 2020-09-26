@@ -1,6 +1,7 @@
 "use strict";
 
 let start = document.getElementById('start'),
+  cancel = document.getElementById('cancel'),
   incomePlus = document.getElementsByTagName('button')[0],
   expensesPlus = document.getElementsByTagName('button')[1],
   depositCheck = document.querySelector('#deposit-check'),
@@ -21,7 +22,8 @@ let start = document.getElementById('start'),
   targetAmount = document.querySelector('.target-amount'),
   periodSelect = document.querySelector('.period-select'),
   incomeItems = document.querySelectorAll('.income-items'),
-  periodAmount = document.querySelector('.period-amount');
+  periodAmount = document.querySelector('.period-amount'),
+  inputs = document.querySelectorAll('input');
 let isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
@@ -59,6 +61,9 @@ let appData = {
     this.getBudget();
 
     this.showResult();
+
+    start.style.display = 'none';
+    cancel.style.display = 'block';
     // console.log(budgetMonthValue);
   },
   startVerification: function () {
@@ -66,6 +71,14 @@ let appData = {
       console.log('button is disabled2');
       return start.style.disabled;
     } else {
+      inputs = document.querySelectorAll('input');
+      for (let key in inputs) {
+        let app = inputs[key];
+
+
+        console.log('dis');
+        app.setAttribute('disabled', 'disabled');
+      }
       return this.start();
     }
   },
@@ -224,6 +237,44 @@ start.addEventListener('click', appData.startVerification);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 periodSelect.addEventListener('input', appData.periodValue);
+cancel.addEventListener('click', function () {
+  for (let key in appData) {
+    if (typeof appData[key] !== 'function') {
+      appData[key] = 0;
+    }
+    // budgetMonthValue.value = 0;
+    // budgetDayValue.value = 0;
+    // expensesMonthValue.value = 0;
+    // additionalExpensesValue.value = 0;
+    // additionalIncomeValue.value = 0;
+    // targetMonthValue.value = 0;
+    // incomePeriodValue.value = 0;
+
+  }
+  // console.log(salaryAmount.tagName);
+
+
+  // incomePlus.reset();
+  // expensesPlus.reset();
+  // depositCheck.reset();
+  // additionalIncomeItem.reset();
+  // budgetDayValue.reset();
+  // expensesMonthValue.reset();
+  // additionalIncomeValue.reset();
+  // additionalExpensesValue.reset();
+  // incomePeriodValue.reset();
+  // targetMonthValue.reset();
+  // budgetMonthValue.reset();
+  // salaryAmount.value = '';
+  // incomeTitle.reset();
+  // expensesTitle.reset();
+  // expensesItems.reset();
+  // additionalExpensesItem.reset();
+  // targetAmount.reset();
+  // periodSelect.reset();
+  // incomeItems.reset();
+  // periodAmount.reset();
+});
 // periodSelect.addEventListener('mousemove', incomePeriodValue.value = appData.calcPeriod());
 // periodSelect.addEventListener('mousemove', appData.showResult);
 
