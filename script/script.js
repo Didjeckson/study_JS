@@ -24,6 +24,9 @@ let start = document.getElementById('start'),
   incomeItems = document.querySelectorAll('.income-items'),
   periodAmount = document.querySelector('.period-amount'),
   inputs = document.querySelectorAll('input');
+
+const income = document.querySelector('.income'),
+  expenses = document.querySelector('.expenses');
 let isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
@@ -74,8 +77,8 @@ let appData = {
       start.style.display = 'none';
       cancel.style.display = 'block'; //12
       for (let i = 0; i < inputs.length; i++) {
-        console.log(inputs[i], i);
-        console.log('dis');
+        // console.log(inputs[i], i);
+        // console.log('dis');
         inputs[i].setAttribute('disabled', 'disabled');
         if (inputs[i].className === 'period-select') {
           break;
@@ -254,7 +257,41 @@ cancel.addEventListener('click', function () {
 
   }
   // console.log(salaryAmount.tagName);
+  inputs = document.querySelectorAll('input');
+  inputs.forEach(element => {
+    element.value = '';
+  });
+  periodSelect.value = 1;
+  periodAmount.textContent = periodSelect.value;
 
+  // income.innerHTML = income;
+
+  ////////////////////////////////////  ТРАБЛЫ 
+
+  var array = [];
+
+  incomeItems.forEach(element => {
+    let i = 0;
+    array[i] = element;
+    i++;
+  });
+
+
+  for (let i = 1; i <= 2; i++) {
+    incomeItems = document.querySelectorAll('.income-items');
+    expensesItems = document.querySelectorAll('.expenses-items');
+    if (expensesItems.length > 1) {
+      incomeItems[i].remove();
+      // incomeItems.pop(i);
+      array.slice(i, 1);
+
+    }
+    console.log(array);
+    if (expensesItems.length > 1) {
+      expensesItems[i].remove();
+      expensesItems.pop();
+    }
+  }
 
   // incomePlus.value = '';
   // expensesPlus.value = '';
