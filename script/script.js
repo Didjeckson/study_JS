@@ -62,8 +62,7 @@ let appData = {
 
     this.showResult();
 
-    start.style.display = 'none';
-    cancel.style.display = 'block';
+
     // console.log(budgetMonthValue);
   },
   startVerification: function () {
@@ -72,12 +71,15 @@ let appData = {
       return start.style.disabled;
     } else {
       inputs = document.querySelectorAll('input');
-      for (let key in inputs) {
-        let app = inputs[key];
-
-
+      start.style.display = 'none';
+      cancel.style.display = 'block'; //12
+      for (let i = 0; i < inputs.length; i++) {
+        console.log(inputs[i], i);
         console.log('dis');
-        app.setAttribute('disabled', 'disabled');
+        inputs[i].setAttribute('disabled', 'disabled');
+        if (inputs[i].className === 'period-select') {
+          break;
+        }
       }
       return this.start();
     }
@@ -254,26 +256,26 @@ cancel.addEventListener('click', function () {
   // console.log(salaryAmount.tagName);
 
 
-  // incomePlus.reset();
-  // expensesPlus.reset();
-  // depositCheck.reset();
-  // additionalIncomeItem.reset();
-  // budgetDayValue.reset();
-  // expensesMonthValue.reset();
-  // additionalIncomeValue.reset();
-  // additionalExpensesValue.reset();
-  // incomePeriodValue.reset();
-  // targetMonthValue.reset();
-  // budgetMonthValue.reset();
+  // incomePlus.value = '';
+  // expensesPlus.value = '';
+  // depositCheck.value = '';
+  // additionalIncomeItem.value = '';
+  // budgetDayValue.value = '';
+  // expensesMonthValue.value = '';
+  // additionalIncomeValue.value = '';
+  // additionalExpensesValue.value = '';
+  // incomePeriodValue.value = '';
+  // targetMonthValue.value = '';
+  // budgetMonthValue.value = '';
   // salaryAmount.value = '';
-  // incomeTitle.reset();
-  // expensesTitle.reset();
-  // expensesItems.reset();
-  // additionalExpensesItem.reset();
-  // targetAmount.reset();
-  // periodSelect.reset();
-  // incomeItems.reset();
-  // periodAmount.reset();
+  // incomeTitle.value = '';
+  // expensesTitle.value = '';
+  // expensesItems.value = '';
+  // additionalExpensesItem.value = '';
+  // targetAmount.value = '';
+  // periodSelect.value = '';
+  // incomeItems.value = '';
+  // periodAmount.value = '';
 });
 // periodSelect.addEventListener('mousemove', incomePeriodValue.value = appData.calcPeriod());
 // periodSelect.addEventListener('mousemove', appData.showResult);
